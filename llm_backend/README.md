@@ -63,10 +63,5 @@ pytest -q
 Postman
 - Import the provided `postman_collection.json` file in Postman to test `/api/chat`.
 
-Next steps for teammates
-- Implement document ingestion: chunking, encoding via `Embeddings.encode`, building FAISS index and `metadata` mapping, then call `RAGPipeline.load_metadata()`.
-- Plug a real translation backend for `IndicNLPStrategy` or configure Google Cloud Translate.
-- Replace `LLMEngine` local placeholder with a local LLM client (e.g., LlamaCPP, Ollama) if required.
 
-Contact
-- If you want, I can add an ingestion helper script, or wire CI for tests. Request next step.
+
