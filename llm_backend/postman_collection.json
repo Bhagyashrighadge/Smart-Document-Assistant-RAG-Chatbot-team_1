@@ -1,0 +1,44 @@
+{
+  "info": {
+    "name": "Smart Document Assistant - Backend",
+    "_postman_id": "b6f1b9c2-0000-4000-8000-000000000000",
+    "description": "Collection for testing /api/chat",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Chat - Ask question",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"What is the main idea of the document?\",\n  \"language\": \"en\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/chat",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "chat"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
