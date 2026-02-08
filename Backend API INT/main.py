@@ -10,9 +10,23 @@ except ImportError:
     HAS_GZIP = False
 import logging
 import os
+from pathlib import Path
 from dotenv import load_dotenv
+import sys
 
 from api.routes import router
+
+# Add parent directory for voice module imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+# Try to import voice module (optional)
+try:
+    from speach_module.routes import router as voice_router
+    VOICE_MODULE_AVAILABLE = True
+except ImportError:
+    VOICE_MODULE_AVAILABLE = False
+    logger_init = logging.getLogger(__name__)
+    logger_init.info("Voice module not available. Install dependencies to enable: pip install -r speach_module/requirements.txt")
 
 # Load environment variables
 load_dotenv()
@@ -47,6 +61,11 @@ if HAS_GZIP:
 # Include routers
 app.include_router(router, prefix="/api", tags=["api"])
 
+# Include voice module router if available
+if VOICE_MODULE_AVAILABLE:
+    app.include_router(voice_router, prefix="/api", tags=["voice"])
+    logger.info("Voice module loaded successfully")
+
 
 @app.get("/")
 async def root():
@@ -70,6 +89,13 @@ async def startup_event():
         logger.warning("GEMINI_API_KEY not set in environment")
     else:
         logger.info("Gemini API key loaded successfully")
+    
+    # Initialize voice module if available
+    if VOICE_MODULE_AVAILABLE:
+        try:
+            logger.info("Voice module is available and loaded")
+        except Exception as e:
+            logger.warning(f"Voice module initialization warning: {e}")
 
 
 @app.on_event("shutdown")
