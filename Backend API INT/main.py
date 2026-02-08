@@ -14,7 +14,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import sys
 
-from api.routes import router
+from routes import router
 
 # Add parent directory for voice module imports
 sys.path.insert(0, str(Path(__file__).parent.parent))

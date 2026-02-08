@@ -10,9 +10,33 @@ except ImportError:
     HAS_GZIP = False
 import logging
 import os
+import sys
+from pathlib import Path
 from dotenv import load_dotenv
 
 from api.routes import router
+
+# Add parent directories for voice module imports
+# Backend is at: project_root/smart-document-assistant/backend
+# Voice module is at: project_root/speach_module
+# So we need to go up 2 levels from backend to reach project_root
+project_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(project_root))
+
+# Try to import voice module (optional)
+try:
+    from speach_module.routes import router as voice_router
+    VOICE_MODULE_AVAILABLE = True
+    logger_temp = logging.getLogger(__name__)
+    logger_temp.info("Voice module imported successfully")
+except ImportError as e:
+    VOICE_MODULE_AVAILABLE = False
+    logger_temp = logging.getLogger(__name__)
+    logger_temp.warning(f"Voice module import failed: {e}")
+except Exception as e:
+    VOICE_MODULE_AVAILABLE = False
+    logger_temp = logging.getLogger(__name__)
+    logger_temp.warning(f"Voice module error: {e}")
 
 # Load environment variables
 load_dotenv()
@@ -47,6 +71,11 @@ if HAS_GZIP:
 # Include routers
 app.include_router(router, prefix="/api", tags=["api"])
 
+# Include voice module router if available
+if VOICE_MODULE_AVAILABLE:
+    app.include_router(voice_router, prefix="/api", tags=["voice"])
+    logger.info("Voice module loaded successfully")
+
 # Load and verify API keys
 @app.on_event("startup")
 async def startup_event():
@@ -56,6 +85,12 @@ async def startup_event():
         logger.info("DeepSeek API key loaded successfully")
     else:
         logger.warning("DeepSeek API key not found in environment")
+    
+    # Log voice module status
+    if VOICE_MODULE_AVAILABLE:
+        logger.info("Voice module available - speech recognition and text-to-speech enabled")
+    else:
+        logger.info("Voice module not available - install dependencies to enable: pip install -r ../speach_module/requirements.txt")
 
 
 @app.get("/")
