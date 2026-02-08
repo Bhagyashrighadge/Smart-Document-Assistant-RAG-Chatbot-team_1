@@ -13,7 +13,7 @@
 ## Project Structure
 
 ```
-smart_document_assistant/
+text_processing/
 ├── __init__.py                    # Main entry point
 ├── requirements.txt               # Python dependencies
 ├── .env.example                   # Environment variables template
@@ -74,7 +74,7 @@ smart_document_assistant/
 
 ```bash
 # Clone or navigate to project
-cd smart_document_assistant
+cd text_processing
 
 # Install dependencies
 pip install -r requirements.txt
@@ -87,19 +87,19 @@ python -m spacy download en_core_web_sm
 
 ```python
 # Option 1: Simple usage - Extract only
-from smart_document_assistant import extract_text
+from text_processing import extract_text
 
-result = extract_text(\"document.pdf\")
+result = extract_text("document.pdf")
 print(result.raw_text)
 
 # Option 2: Preprocess only
-from smart_document_assistant import preprocess_text
+from text_processing import preprocess_text
 
-preprocessed = preprocess_text(\"raw text here\", language=\"en\")
+preprocessed = preprocess_text("raw text here", language="en")
 print(preprocessed.cleaned_text)
 
 # Option 3: Complete pipeline (RECOMMENDED)
-from smart_document_assistant import process_document
+from text_processing import process_document
 
 result = process_document(\"document.pdf\", language=\"en\")
 print(result.preprocessing_result.sentences)
@@ -294,10 +294,10 @@ Typical processing times (on standard hardware):
 
 ## Logging
 
-Logs are saved to `logs/smart_document_assistant.log`:
+Logs are saved to `logs/text_processing.log`:
 
 ```python
-from smart_document_assistant.common.logger import setup_logger
+from text_processing.common.logger import setup_logger
 
 logger = setup_logger(__name__)
 logger.info(\"Processing started\")

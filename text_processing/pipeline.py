@@ -22,7 +22,7 @@ class DocumentProcessingPipeline:
     INTEGRATION POINT: Main entry point for other modules
     
     Usage:
-        from smart_document_assistant.pipeline import DocumentProcessingPipeline
+        from text_processing.pipeline import DocumentProcessingPipeline
         
         pipeline = DocumentProcessingPipeline()
         result = pipeline.process("document.pdf", language="en")
@@ -122,7 +122,7 @@ def process_document(
     Convenience function for complete document processing
     
     Usage:
-        from smart_document_assistant import process_document
+        from text_processing import process_document
         
         result = process_document("document.pdf", language="en")
         print(result.preprocessing_result.sentences)

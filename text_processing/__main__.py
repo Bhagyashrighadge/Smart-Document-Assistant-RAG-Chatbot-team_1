@@ -1,6 +1,6 @@
 """
 __main__.py - Quick test script for the module
-Run this to verify everything is working: python -m smart_document_assistant
+Run this to verify everything is working: python -m text_processing
 """
 
 import sys
@@ -10,7 +10,7 @@ def test_imports():
     """Test if all imports work"""
     print("Testing imports...")
     try:
-        from smart_document_assistant import (
+        from text_processing import (
             process_document,
             extract_text,
             preprocess_text,
@@ -74,7 +74,7 @@ def show_info():
     print("  • REST API for microservices")
     print("  • Comprehensive test suite")
     print("\\nQuick Start:")
-    print("  from smart_document_assistant import process_document")
+    print("  from text_processing import process_document")
     print("  result = process_document('document.pdf', language='en')")
     print("\\nDocumentation:")
     print("  • README.md - Full documentation")

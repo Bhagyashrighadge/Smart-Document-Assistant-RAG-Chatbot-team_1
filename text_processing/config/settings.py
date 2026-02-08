@@ -52,7 +52,7 @@ NLP_CONFIG = {
 LOGGING_CONFIG = {
     "level": "INFO",
     "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    "log_file": LOGS_DIR / "smart_document_assistant.log",
+    "log_file": LOGS_DIR / "text_processing.log",
 }
 
 # === DATABASE/STORAGE ===
