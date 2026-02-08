@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+langchain
+openai
+sentence-transformers
+faiss-cpu
+huggingface-hub
+google-cloud-translate
+langdetect
+indic-nlp-library
+pytest
+pytest-asyncio
+httpx
+python-dotenv
