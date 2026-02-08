@@ -1,0 +1,47 @@
+@echo off
+REM Quick Start Script for BhashaSetu (Windows)
+
+echo 🚀 Starting BhashaSetu - Multilingual Smart Document Assistant
+echo.
+
+echo ✓ Checking Python installation...
+python --version || echo ❌ Python not found
+
+echo ✓ Checking Node.js installation...
+node --version || echo ❌ Node.js not found
+
+echo.
+echo 📋 INSTRUCTION GUIDE:
+echo ====================
+echo.
+echo 1️⃣  CONFIGURE BACKEND
+echo     └─ Edit backend\.env and add:
+echo        DEEPSEEK_API_KEY=your_api_key_here
+echo.
+echo 2️⃣  START BACKEND (Terminal 1)
+echo     └─ cd backend
+echo     └─ python -m venv venv
+echo     └─ venv\Scripts\activate
+echo     └─ pip install -r requirements.txt
+echo     └─ uvicorn main:app --reload
+echo     └─ Backend: http://localhost:8000
+echo     └─ Docs: http://localhost:8000/docs
+echo.
+echo 3️⃣  START FRONTEND (Terminal 2)
+echo     └─ cd frontend
+echo     └─ npm install
+echo     └─ npm run dev
+echo     └─ Frontend: http://localhost:5173
+echo.
+echo 4️⃣  OPEN BROWSER
+echo     └─ Navigate to http://localhost:5173
+echo.
+echo 5️⃣  USE THE APPLICATION
+echo     └─ Upload PDF
+echo     └─ Ask questions
+echo     └─ Select language (EN / HI / MR)
+echo     └─ Get answers!
+echo.
+echo 📚 Documentation: Read README.md for detailed information
+echo.
+pause
