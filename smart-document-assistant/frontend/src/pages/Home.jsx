@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
+import PDFAnalysisIllustration from '../assets/PDFAnalysis';
 
 const Home = ({ onStartChat }) => {
   const { isDark } = useTheme();
@@ -41,16 +42,9 @@ const Home = ({ onStartChat }) => {
               </div>
             </div>
             
-            {/* Illustration placeholder */}
+            {/* PDF Analysis Illustration */}
             <div className={`relative h-80 sm:h-96 rounded-2xl overflow-hidden ${isDark ? 'bg-gradient-to-br from-primary-900/30 to-accent-900/30 border border-slate-700' : 'bg-gradient-to-br from-primary-100 to-accent-100 border border-slate-200'}`}>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">📄</div>
-                  <div className={`text-sm font-semibold ${isDark ? 'text-primary-300' : 'text-primary-600'}`}>
-                    PDF Intelligence Hub
-                  </div>
-                </div>
-              </div>
+              <PDFAnalysisIllustration isDark={isDark} />
             </div>
           </div>
         </div>
